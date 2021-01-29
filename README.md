@@ -6,6 +6,7 @@ Project written in C to simulate dynamic memory allocation
 malloc() and free() functions. Our versions fulfill the same function as malloc() and free();
 however, they also detect common programming errors that users make when using malloc() and
 free().
+
   Our malloc() and free() functions are named mymalloc() and myfree() respectively. In
 order to simulate a main memory, we used a global static char array of size 4096. Mymalloc()
 takes a size in bytes from the user and returns a pointer to an address in this array where there is
@@ -26,6 +27,7 @@ metadata struct to be as space-efficient as possible, using shorts rather than i
 also utilize flag for both a status and a magic check rather than using a char array for magic in
 order to conserve space and eliminate padding, reducing the size of our metadata to only four
 bytes.
+
   We designed myfree() to take an address and first check whether the address given refers
 to a valid metadata pointer in the array. If not, myfree() returns one of three informative error
 messages, which also print out the current file name and line number. These errors include a
@@ -44,6 +46,7 @@ range; and isMeta() takes an address and returns an integer to indicate whether 
 is a valid pointer (1 == valid, 0 == invalid). Signatures of all functions used in mymalloc.c, as
 well as any definitions, declarations, structures, and macros, were included in a mymalloc.h
 library file.
+
   To test our program, we wrote and ran a series of “workloads” found in memgrind.c,
 including workloads A through F. For workloads A through D, we followed the specifications
 provided in the assignment description. For workloads E and F, we designed our own testing
