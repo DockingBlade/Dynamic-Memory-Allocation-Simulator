@@ -49,8 +49,7 @@ library file.
 
   To test our program, we wrote and ran a series of “workloads” found in memgrind.c,
 including workloads A through F. For workloads A through D, we followed the specifications
-provided in the assignment description. For workloads E and F, we designed our own testing
-procedure, which is detailed in testplan.txt. The data which we collected consisted of the total
+provided in the assignment description.For workload E, we randomly allocated and freed blocks of a size of 100 bytes (including metadata) until a total of 10,000 bytes’ worth of data had been allocated. Upon allocating a total of 10,000 bytes, workload E then frees all allocated blocks before terminating. This was done in order to test the ability of our mymalloc() and myfree() programs to handle large individual block sizes. In workload F, we allocated and subsequently freed a pointer i, testing every possible size of i between the minimum possible size of one byte and the maximum possible size of 4092 bytes (the size of a metadata struct subtracted from the size of the main array). In this workload, the size of individual blocks of allocated data were varied; this was done so as to test mymalloc() and myfree()’s ability to handle a wide range of different block sizes, and in particular to ensure that the functions would handle a maximum allocation of its maximum size without malfunctioning or permitting additional allocations without freeing the size-4092 block.. The data which we collected consisted of the total
 time taken to compile each workload; each workload was run 100 times consecutively, and the
 an average of these times was calculated and reported. We found that the average compilation
 times of workloads A through F were approximately 4.45, 54.15, 4.53, 4.95, 31.59, and 120.65
@@ -63,3 +62,5 @@ managed to handle 100 iterations of each of the seven workloads with an average 
 time of less than one second. Based on these results, we can conclude that our implementation of
 mymalloc() and myfree() successfully fulfill the same basic function served by malloc() and
 free(), while also making improvements to detect common errors on a user’s part.
+
+
